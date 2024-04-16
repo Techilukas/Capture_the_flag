@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class movescript_wasd : MonoBehaviour
 {
     Rigidbody2D body;
-    GameObject test;
+    public GameObject test;
     float horizontal;
     float vertical;
 
     public float runSpeed = 20.0f;
+    float direction = 0;
 
     void Start()
     {
@@ -20,6 +22,7 @@ public class movescript_wasd : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        
         if(Input.GetAxisRaw("Fire3") == 1)
         {
             horizontal *= 1.5f;
@@ -34,6 +37,13 @@ public class movescript_wasd : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        if (horizontal != 0 || vertical != 0)
+        {
+            direction = math.atan2(-vertical, horizontal) * 180 / math.PI + 90;
+        }
+        
+        test.transform.rotation = Quaternion.Euler(0, 180, direction);
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 }
