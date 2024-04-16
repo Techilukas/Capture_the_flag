@@ -25,8 +25,8 @@ public class movescript_wasd : MonoBehaviour
         
         if(Input.GetAxisRaw("Fire3") == 1)
         {
-            horizontal *= 1.5f;
-            vertical *= 1.5f;
+            horizontal *= 2.5f;
+            vertical *= 2.5f;
         }
         if (horizontal !=0 && vertical != 0)
         {
@@ -43,7 +43,7 @@ public class movescript_wasd : MonoBehaviour
             direction = math.atan2(-vertical, horizontal) * 180 / math.PI + 90;
         }
         
-        test.transform.rotation = Quaternion.Euler(0, 180, direction);
+        test.transform.rotation = Quaternion.Euler(20, 200, direction);
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 }
