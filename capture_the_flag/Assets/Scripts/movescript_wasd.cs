@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Unity.Netcode;
+using UnityEngine.Video;
 
-public class movescript_wasd : MonoBehaviour
+public class movescript_wasd : NetworkBehaviour
 {
     Rigidbody2D body;
     public GameObject test;
@@ -11,7 +13,7 @@ public class movescript_wasd : MonoBehaviour
     float vertical;
 
     public float runSpeed = 20.0f;
-    float direction = 0;
+    public float direction = 0;
 
     void Start()
     {
@@ -20,6 +22,8 @@ public class movescript_wasd : MonoBehaviour
 
     void Update()
     {
+        if(!IsOwner)
+            return;
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         
@@ -37,13 +41,15 @@ public class movescript_wasd : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (!IsOwner)
+            return;
         if (horizontal != 0 || vertical != 0)
         {
             direction = math.atan2(-vertical, horizontal) * 180 / math.PI + 90;
         }
         
-        test.transform.rotation = Quaternion.Euler(20, 200, direction);
+        var dir = Quaternion.Euler(20, 200, direction);
+        body.transform.rotation = dir;
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 }
