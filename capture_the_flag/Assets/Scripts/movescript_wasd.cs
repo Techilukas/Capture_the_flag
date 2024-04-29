@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class movescript_wasd : NetworkBehaviour
 {
     public Rigidbody2D rb;
+    public Rigidbody2D rbcam;
     public GameObject test;
     Camera cam;
 
@@ -19,6 +20,7 @@ public class movescript_wasd : NetworkBehaviour
     private void Start()
     {
         cam = Camera.main;
+        rbcam = cam.GetComponent<Rigidbody2D>();
     }
 
 
@@ -33,6 +35,11 @@ public class movescript_wasd : NetworkBehaviour
 
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        rb.MovePosition(rb.position + movement * runSpeed);
+        rbcam.MovePosition(rb.position + movement * runSpeed);
+
+
     }
 
     private void FixedUpdate()
@@ -40,12 +47,11 @@ public class movescript_wasd : NetworkBehaviour
         if (!IsOwner)
             return;
 
-        rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
+       
+        //Vector2 lookDir = mousePos - rb.position;
 
-        Vector2 lookDir = mousePos - rb.position;
+        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-
-        rb.rotation = angle;
+        //rb.rotation = angle;
     }
 }
