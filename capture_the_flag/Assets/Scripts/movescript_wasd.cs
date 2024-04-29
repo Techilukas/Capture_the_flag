@@ -52,7 +52,7 @@ public class movescript_wasd : NetworkBehaviour
             inputchanged = false;
         }
         rotation = body.rotation + 90;
-        var dir = Quaternion.Euler(20, 200, + (direction);
+        var dir = Quaternion.Euler(20, 200, direction);
         body.transform.rotation = dir;
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
