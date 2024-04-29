@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5956582181664520877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8115589017375073033}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8115589017375073033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956582181664520877}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.837, y: 1.272, z: -0.100000024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8263686096235253219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8810875056880924718
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +49,7 @@ GameObject:
   - component: {fileID: 8766528523429126307}
   - component: {fileID: -6670162416926071593}
   - component: {fileID: -5981601117463364800}
+  - component: {fileID: 5924429363051752685}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -37,7 +69,8 @@ Transform:
   m_LocalPosition: {x: -1.79, y: -0.65, z: 0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8115589017375073033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &3288808965462596982
@@ -129,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 241646002
-  InScenePlacedSourceGlobalObjectIdHash: 771061595
+  GlobalObjectIdHash: 157982959
+  InScenePlacedSourceGlobalObjectIdHash: 1309826209
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -150,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6ef841473b55a499b9bf38d2067bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 2656314298766415479}
   test: {fileID: 8810875056880924718}
   runSpeed: 5
   direction: 0
@@ -253,3 +287,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8494089, y: 1.6552832}
   m_EdgeRadius: 0
+--- !u!114 &5924429363051752685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810875056880924718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07ed2a9bca489242bb5477b57e99dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 8115589017375073033}
+  bullet_prefab: {fileID: 8163957933614129001, guid: c8f8f39312ed60d4cb0b5a1a4b2281d5, type: 3}
+  bulletForce: 20

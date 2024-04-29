@@ -8,14 +8,14 @@ public class bullet : MonoBehaviour
     public GameObject shooter;
 
     // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
 
 
-        //explosion
-        //damage
+    //    //explosion
+    //    //damage
 
-        Destroy(gameObject);
+    //    Destroy(gameObject);
 
-    }
+    //}
 }
