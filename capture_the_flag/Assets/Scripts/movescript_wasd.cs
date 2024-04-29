@@ -4,56 +4,50 @@ using Unity.Mathematics;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Video;
+using Unity.VisualScripting;
 
 public class movescript_wasd : NetworkBehaviour
 {
-    Rigidbody2D body;
+    public Rigidbody2D rb;
     public GameObject test;
-    float horizontal;
-    float vertical;
+    Camera cam;
+
+    Vector2 movement;
+    Vector2 mousePos;
 
     public float runSpeed = 20.0f;
     public float direction = 0;
-    public float rotation;
-    public bool inputchanged;
 
-    void Start()
+    private void Start()
     {
-        body = GetComponent<Rigidbody2D>();
-        inputchanged = true;
+        cam = Camera.main;
     }
+
+
 
     void Update()
     {
         if(!IsOwner)
             return;
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        
-        if(Input.GetAxisRaw("Fire3") == 1)
-        {
-            horizontal *= 2.5f;
-            vertical *= 2.5f;
-        }
-        if (horizontal !=0 && vertical != 0)
-        {
-            horizontal *= 0.7f;
-            vertical *= 0.7f;
-        }
+
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void FixedUpdate()
     {
         if (!IsOwner)
             return;
-        if (horizontal != 0 || vertical != 0 && inputchanged)
-        {
-            direction = math.atan2(-vertical, horizontal) * 180 / math.PI + 90;
-            inputchanged = false;
-        }
-        rotation = body.rotation + 90;
-        var dir = Quaternion.Euler(20, 200, + (direction);
-        body.transform.rotation = dir;
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        
+        rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
+
+        Vector2 lookDir = mousePos - rb.position;
+
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+
+        rb.rotation = angle;
     }
 }
