@@ -8,6 +8,7 @@ public class movescript_wasd : NetworkBehaviour
 {
     public Rigidbody2D rb;
     public Rigidbody2D rbcam;
+    public CharacterController characterController;
     public GameObject test;
     Camera cam;
 
@@ -16,6 +17,7 @@ public class movescript_wasd : NetworkBehaviour
 
     public float runSpeed = 20.0f;
     public float direction = 0;
+    public float damp = 10f;
 
     private void Start()
     {
@@ -36,10 +38,9 @@ public class movescript_wasd : NetworkBehaviour
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        rb.MovePosition(rb.position + movement * runSpeed);
-        rbcam.MovePosition(rb.position + movement * runSpeed);
-
-
+        rb.MovePosition(rb.position + movement * runSpeed * Time.deltaTime);
+        rbcam.MovePosition(rbcam.position + movement * runSpeed * Time.deltaTime);
+        cam.transform.position = Vector2.SmoothDamp(cam.transform.position, transform.position, ref );
     }
 
     private void FixedUpdate()
@@ -47,11 +48,11 @@ public class movescript_wasd : NetworkBehaviour
         if (!IsOwner)
             return;
 
-       
-        //Vector2 lookDir = mousePos - rb.position;
 
-        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        Vector2 lookDir = mousePos - rb.position;
 
-        //rb.rotation = angle;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+
+        rb.rotation = angle;
     }
 }
