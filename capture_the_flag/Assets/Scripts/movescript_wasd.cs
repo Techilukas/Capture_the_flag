@@ -39,8 +39,8 @@ public class movescript_wasd : NetworkBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         rb.MovePosition(rb.position + movement * runSpeed * Time.deltaTime);
-        rbcam.MovePosition(rbcam.position + movement * runSpeed * Time.deltaTime);
-        cam.transform.position = Vector2.SmoothDamp(cam.transform.position, transform.position, ref );
+        //rbcam.MovePosition(rbcam.position + movement * runSpeed * Time.deltaTime);
+        
     }
 
     private void FixedUpdate()
@@ -54,5 +54,8 @@ public class movescript_wasd : NetworkBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
         rb.rotation = angle;
+
+        rbcam.position = rb.position;
+
     }
 }
