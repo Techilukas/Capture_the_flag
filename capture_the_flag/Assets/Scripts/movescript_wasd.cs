@@ -40,7 +40,7 @@ public class movescript_wasd : NetworkBehaviour
 
         rb.MovePosition(rb.position + movement * runSpeed * Time.deltaTime);
         rbcam.MovePosition(rbcam.position + movement * runSpeed * Time.deltaTime);
-        cam.transform.position = Vector2.SmoothDamp(cam.transform.position, transform.position, ref );
+        
     }
 
     private void FixedUpdate()
