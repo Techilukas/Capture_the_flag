@@ -8,7 +8,7 @@ public class player : MonoBehaviour
     public float max_health = 100;
     public float health;
     public GameObject Healthbar;
-    const float scale = 0.12f;
+    const float scale = 0.055f;
     const float minscale = 0.2f;
 
     CinemachineVirtualCamera virtualCamera;
@@ -40,7 +40,7 @@ public class player : MonoBehaviour
     void refreshhealthbar()
     {
         Healthbar.transform.localScale = new Vector3(health*scale + minscale, Healthbar.transform.localScale.y, Healthbar.transform.localScale.z);
-        Healthbar.transform.localPosition = new Vector3(Healthbar.transform.localScale.x /2  -4, Healthbar.transform.localPosition.y, Healthbar.transform.localPosition.z);
+        Healthbar.transform.localPosition = new Vector3(Healthbar.transform.localScale.x /2  -1.1f, Healthbar.transform.localPosition.y, Healthbar.transform.localPosition.z);
     }
 
 }
