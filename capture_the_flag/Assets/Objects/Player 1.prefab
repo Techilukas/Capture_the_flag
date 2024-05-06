@@ -316,4 +316,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 100
   health: 0
-  virtualcam_go: {fileID: 4301318364924905110, guid: 443f047169497cb4b82916d6354875b5, type: 3}
+  Healthbar: {fileID: 0}
+  virtualcam_prefab: {fileID: 4301318364924905110, guid: 443f047169497cb4b82916d6354875b5, type: 3}
