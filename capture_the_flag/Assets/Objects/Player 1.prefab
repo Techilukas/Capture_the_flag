@@ -186,11 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2656314298766415479}
   rbcam: {fileID: 0}
-  characterController: {fileID: 0}
-  test: {fileID: 8810875056880924718}
   runSpeed: 20
-  direction: 0
-  damp: 10
 --- !u!114 &5582230121202965471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,3 +316,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 100
   health: 0
+  virtualcam_go: {fileID: 4301318364924905110, guid: 443f047169497cb4b82916d6354875b5, type: 3}

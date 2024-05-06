@@ -8,17 +8,13 @@ public class movescript_wasd : NetworkBehaviour
 {
     public Rigidbody2D rb;
     public Rigidbody2D rbcam;
-    public CharacterController characterController;
-    public GameObject test;
     Camera cam;
 
     Vector2 movement;
     Vector2 mousePos;
 
     public float runSpeed = 20.0f;
-    public float direction = 0;
-    public float damp = 10f;
-
+ 
     private void Start()
     {
         cam = Camera.main;
@@ -55,7 +51,7 @@ public class movescript_wasd : NetworkBehaviour
 
         rb.rotation = angle;
 
-        rbcam.position = rb.position;
+        //rbcam.position = rb.position;
 
     }
 }
