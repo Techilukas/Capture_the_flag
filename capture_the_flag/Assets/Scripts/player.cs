@@ -7,6 +7,9 @@ public class player : MonoBehaviour
 {
     public float max_health = 100;
     public float health;
+    public GameObject Healthbar;
+    const float scale = 0.028f;
+    const float minscale = 0.2f;
 
     CinemachineVirtualCamera virtualCamera;
     public GameObject virtualcam_prefab;
@@ -17,6 +20,8 @@ public class player : MonoBehaviour
         virtualCamera.Follow = transform;
 
         health = max_health;
+        Healthbar = GameObject.Find("Healthbar");
+        refreshhealthbar();
     }
 
     public void take_damage(float amount)
@@ -24,11 +29,18 @@ public class player : MonoBehaviour
         health -= amount;
 
         if (health <= 0) die();
+        refreshhealthbar();
     }
 
     void die()
     {
         Destroy(gameObject);
+    }
+
+    void refreshhealthbar()
+    {
+        Healthbar.transform.localScale = new Vector3(health*scale + minscale, Healthbar.transform.localScale.y, Healthbar.transform.localScale.z);
+        Healthbar.transform.localPosition = new Vector3(Healthbar.transform.localScale.x /2  -1, Healthbar.transform.localPosition.y, Healthbar.transform.localPosition.z);
     }
 
 }
