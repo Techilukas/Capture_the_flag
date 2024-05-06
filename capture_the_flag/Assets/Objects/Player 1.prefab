@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2656314298766415479}
   rbcam: {fileID: 0}
-  runSpeed: 20
+  runSpeed: 5
 --- !u!114 &5582230121202965471
 MonoBehaviour:
   m_ObjectHideFlags: 0

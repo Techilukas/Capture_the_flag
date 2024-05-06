@@ -33,10 +33,6 @@ public class movescript_wasd : NetworkBehaviour
 
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        rb.MovePosition(rb.position + movement * runSpeed * Time.deltaTime);
-        //rbcam.MovePosition(rbcam.position + movement * runSpeed * Time.deltaTime);
-        
     }
 
     private void FixedUpdate()
@@ -44,6 +40,7 @@ public class movescript_wasd : NetworkBehaviour
         if (!IsOwner)
             return;
 
+        rb.velocity  = movement * runSpeed;
 
         Vector2 lookDir = mousePos - rb.position;
 
