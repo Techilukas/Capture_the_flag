@@ -7,10 +7,9 @@ using Unity.VisualScripting;
 public class movescript_wasd : NetworkBehaviour
 {
     public Rigidbody2D rb;
-    public Rigidbody2D rbcam;
     Camera cam;
 
-    Vector2 movement;
+    public Vector2 movement;
     Vector2 mousePos;
 
     public float runSpeed = 20.0f;
@@ -18,10 +17,7 @@ public class movescript_wasd : NetworkBehaviour
     private void Start()
     {
         cam = Camera.main;
-        rbcam = cam.GetComponent<Rigidbody2D>();
     }
-
-
 
     void Update()
     {
@@ -30,25 +26,18 @@ public class movescript_wasd : NetworkBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
+        {
+            movement.x *= 0.7f;
+            movement.y *= 0.7f;
+        }
 
-
+        rb.MovePosition(movement * runSpeed * Time.deltaTime + rb.position);
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-    }
-
-    private void FixedUpdate()
-    {
-        if (!IsOwner)
-            return;
-
-        rb.velocity  = movement * runSpeed;
-
         Vector2 lookDir = mousePos - rb.position;
-
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-
         rb.rotation = angle;
-
-        //rbcam.position = rb.position;
-
     }
+
+   
 }
