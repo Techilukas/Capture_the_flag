@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 1369938321}
   m_Layer: 3
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1617228227}
-    PlayerPrefab: {fileID: 8810875056880924718, guid: d322e18f00cf48d4bbb7b3f9bdb89d1f, type: 3}
+    PlayerPrefab: {fileID: 1666867550945486510, guid: ff24953a361140f42906419a5a446ef9, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 0ca17f1af6ae95c4686f9aeb974f432a, type: 2}
@@ -1265,6 +1265,10 @@ PrefabInstance:
     - target: {fileID: 8714225045699098944, guid: 53ae3ec35b52c1c49a790212fc93c4d1, type: 3}
       propertyPath: m_Name
       value: trap (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714225045699098944, guid: 53ae3ec35b52c1c49a790212fc93c4d1, type: 3}
+      propertyPath: m_TagString
+      value: trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
