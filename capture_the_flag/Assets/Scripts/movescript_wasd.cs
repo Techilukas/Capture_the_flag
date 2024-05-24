@@ -26,13 +26,9 @@ public class movescript_wasd : NetworkBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
-        {
-            movement.x *= 0.7f;
-            movement.y *= 0.7f;
-        }
+        
 
-        rb.MovePosition(movement * runSpeed * Time.deltaTime + rb.position);
+        rb.velocity = movement.normalized * runSpeed ;
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
