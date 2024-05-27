@@ -8,6 +8,7 @@ TagManager:
   - bullet
   - player
   - trap
+  - other
   layers:
   - Default
   - TransparentFX
