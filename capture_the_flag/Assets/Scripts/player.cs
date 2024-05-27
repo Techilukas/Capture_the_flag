@@ -1,9 +1,10 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class player : NetworkBehaviour
 {
     public float max_health = 100;
     public float health;
@@ -16,9 +17,10 @@ public class player : MonoBehaviour
 
     public void Start()
     {
+        if (!IsOwner)
+            return;
         virtualCamera = Instantiate(virtualcam_prefab).GetComponent<CinemachineVirtualCamera>();
         virtualCamera.Follow = transform;
-
         health = max_health;
         Healthbar = GameObject.Find("Healthbar");
         refreshhealthbar();
@@ -26,6 +28,8 @@ public class player : MonoBehaviour
 
     public void take_damage(float amount)
     {
+        if (!IsOwner)
+            return;
         health -= amount;
 
         if (health <= 0) die();
@@ -34,11 +38,15 @@ public class player : MonoBehaviour
 
     void die()
     {
+        if (!IsOwner)
+            return;
         Destroy(gameObject);
     }
 
     void refreshhealthbar()
     {
+        if (!IsOwner)
+            return;
         Healthbar.transform.localScale = new Vector3(health*scale + minscale, Healthbar.transform.localScale.y, Healthbar.transform.localScale.z);
         Healthbar.transform.localPosition = new Vector3(Healthbar.transform.localScale.x /2  -1.1f, Healthbar.transform.localPosition.y, Healthbar.transform.localPosition.z);
     }

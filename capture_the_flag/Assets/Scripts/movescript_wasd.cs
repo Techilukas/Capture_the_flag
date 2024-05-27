@@ -27,9 +27,6 @@ public class movescript_wasd : NetworkBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        
-
-
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - rb.position;
@@ -38,6 +35,8 @@ public class movescript_wasd : NetworkBehaviour
 
     void FixedUpdate()
     {
+        if (!IsOwner)
+            return;
         rb.velocity = movement.normalized * runSpeed ;
         rb.rotation = angle;
 
