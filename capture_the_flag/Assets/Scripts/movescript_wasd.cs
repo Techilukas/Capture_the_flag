@@ -11,6 +11,7 @@ public class movescript_wasd : NetworkBehaviour
 
     public Vector2 movement;
     Vector2 mousePos;
+    float angle;
 
     public float runSpeed = 20.0f;
  
@@ -28,11 +29,18 @@ public class movescript_wasd : NetworkBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         
 
-        rb.velocity = movement.normalized * runSpeed ;
+
+
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = movement.normalized * runSpeed ;
         rb.rotation = angle;
+
     }
 
    
