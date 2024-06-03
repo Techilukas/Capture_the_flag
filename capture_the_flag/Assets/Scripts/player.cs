@@ -36,6 +36,15 @@ public class player : NetworkBehaviour
         refreshhealthbar();
     }
 
+    public void heal(float amount)
+    {
+        if (!IsOwner)
+            return;
+        health += amount;
+        health = Mathf.Clamp(health, 0, max_health);
+        refreshhealthbar();
+    }
+
     void die()
     {
         if (!IsOwner)
