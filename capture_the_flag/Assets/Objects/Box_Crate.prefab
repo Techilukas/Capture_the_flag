@@ -91,7 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e3d902d75a22b46a04392c1c2d0402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 0
+  banana_prefab: {fileID: 2649888642604883103, guid: 743f136d67edccd48ab0287767379c30, type: 3}
+  max_health: 50
 --- !u!1001 &4356566854453061282
 PrefabInstance:
   m_ObjectHideFlags: 0

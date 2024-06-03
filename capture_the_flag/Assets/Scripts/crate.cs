@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class crate : MonoBehaviour
 {
+    public GameObject banana_prefab;
     public float max_health;
     float health;
 
@@ -34,5 +35,6 @@ public class crate : MonoBehaviour
     void die()
     {
         Destroy(gameObject);
+        Instantiate(banana_prefab, transform.position, Quaternion.identity);
     }
 }

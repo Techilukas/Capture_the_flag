@@ -51,6 +51,9 @@ public class shooting : NetworkBehaviour
 
     void shoot()
     {
+        if(!IsOwner)
+            return;
+
         GameObject bullet = Instantiate(bullet_prefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
