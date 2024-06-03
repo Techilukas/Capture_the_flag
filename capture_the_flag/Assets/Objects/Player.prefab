@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1488240515
+  GlobalObjectIdHash: 2234074156
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -120,14 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07ed2a9bca489242bb5477b57e99dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  firePoint: {fileID: 1623215549741312974}
-  bullet_prefab: {fileID: 6856767331028813333, guid: ec17dfb890eaef04ab1b2f966029b6a4, type: 3}
-=======
   firePointRotator: {fileID: 3513214877613394115}
   firePoint: {fileID: 8022301368409982197}
-  bullet_prefab: {fileID: 8163957933614129001, guid: c8f8f39312ed60d4cb0b5a1a4b2281d5, type: 3}
->>>>>>> 027ddf7de55e412bacd1cda24e6ff38baba486a8
+  bullet_prefab: {fileID: 6856767331028813333, guid: ec17dfb890eaef04ab1b2f966029b6a4, type: 3}
   bulletForce: 20
   cooldown: 0.4
 --- !u!114 &1999978779223157646
