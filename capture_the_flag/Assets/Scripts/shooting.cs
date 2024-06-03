@@ -6,13 +6,22 @@ using UnityEngine;
 
 public class shooting : NetworkBehaviour
 {
+    public Transform firePointRotator;
     public Transform firePoint;
     public GameObject bullet_prefab;
+
+    Camera cam;
+    float angle;
 
     public float bulletForce = 20f;
     public float cooldown = 1f;
 
     float nextshot = 0;
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,6 +29,11 @@ public class shooting : NetworkBehaviour
         if (!IsOwner)
             return;
 
+        Vector2 anglevec = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        angle = Mathf.Atan2(anglevec.y, anglevec.x)*Mathf.Rad2Deg - 90f;
+
+        firePointRotator.rotation = Quaternion.Euler(0, 0, angle);
+        
 
         if (Input.GetButtonDown("Fire1"))
         {
