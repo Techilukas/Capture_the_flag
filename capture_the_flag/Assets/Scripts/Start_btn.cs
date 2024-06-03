@@ -39,7 +39,7 @@ public class Start_btn : MonoBehaviour
     {
         GlobalVariables.Netwokrtype = "client";
         GlobalVariables.ConnectionIP = IP_input.text;
-        SceneManager.LoadScene("Main_Game");
+        SceneManager.LoadScene("Main_Game_Client");
     }
 
     public string LocalIPAddress()
