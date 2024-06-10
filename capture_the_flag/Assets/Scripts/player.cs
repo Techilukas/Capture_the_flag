@@ -22,7 +22,8 @@ public class player : NetworkBehaviour
         virtualCamera = Instantiate(virtualcam_prefab).GetComponent<CinemachineVirtualCamera>();
         virtualCamera.Follow = transform;
         health = max_health;
-        Healthbar = GameObject.Find("Healthbar");
+
+        Healthbar = GameObject.Find("Healthbar");        
         refreshhealthbar();
     }
 

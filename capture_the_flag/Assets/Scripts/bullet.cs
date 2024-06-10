@@ -9,7 +9,8 @@ public class bullet : MonoBehaviour
 
     public float damage = 20f;
 
-    // Start is called before the first frame update
+     // Start is called before the first frame update
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -20,4 +21,6 @@ public class bullet : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+    
 }
