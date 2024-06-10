@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Networking;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class shooting : NetworkBehaviour
 {
@@ -26,8 +29,9 @@ public class shooting : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsOwner)
+        if (!IsLocalPlayer)
             return;
+
 
         Vector2 anglevec = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         angle = Mathf.Atan2(anglevec.y, anglevec.x)*Mathf.Rad2Deg - 90f;
@@ -43,19 +47,31 @@ public class shooting : NetworkBehaviour
                 return;
             }
 
-            shoot();
+            Cmdshoot();
             nextshot = Time.time + cooldown;
         }
 
     }
 
-    void shoot()
+    
+    void Cmdshoot()
     {
-        if(!IsOwner)
-            return;
+        //if (IsHost)
+        //{
+        //    GameObject bullet = Instantiate(bullet_prefab, firePoint.position, firePoint.rotation);
+        //    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
+        //}
+        //Spawn the GameObject you assign in the Inspector
+        PingServerRpc(firePoint.position, firePoint.rotation, firePoint.up);
+    }
 
-        GameObject bullet = Instantiate(bullet_prefab, firePoint.position, firePoint.rotation);
+    [ServerRpc]
+    public void PingServerRpc(Vector3 position, Quaternion rotation, Vector3 up)
+    {
+        GameObject bullet = Instantiate(bullet_prefab, position, rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        rb.AddForce(up * bulletForce, ForceMode2D.Impulse);
+        bullet.GetComponent<NetworkObject>().Spawn();
     }
 }

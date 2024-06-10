@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 691239838068570678}
   - component: {fileID: 4000692089663437801}
-  - component: {fileID: 8866765871385492617}
   - component: {fileID: 6908448837603526225}
+  - component: {fileID: 8866765871385492617}
   m_Layer: 0
   m_Name: Box_Crate
   m_TagString: Untagged
@@ -80,6 +80,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.5582995, y: 5.7726746}
   m_EdgeRadius: 0
+--- !u!114 &6908448837603526225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589503208093813186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2287231838
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &8866765871385492617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,27 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   banana_prefab: {fileID: 2649888642604883103, guid: 743f136d67edccd48ab0287767379c30, type: 3}
   max_health: 50
---- !u!114 &6908448837603526225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2589503208093813186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1001 &4356566854453061282
 PrefabInstance:
   m_ObjectHideFlags: 0

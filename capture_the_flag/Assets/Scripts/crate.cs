@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
+using Unity.Networking;
 using UnityEngine;
 
-public class crate : MonoBehaviour
+public class crate : NetworkBehaviour
 {
     public GameObject banana_prefab;
     public float max_health;
@@ -29,7 +31,13 @@ public class crate : MonoBehaviour
     {
         health -= amount;
 
-        if (health <= 0) die();
+        if (health <= 0) dienetworkRPC();
+    }
+
+    [Rpc(SendTo.Everyone)]
+    void dienetworkRPC()
+    {
+        die();
     }
 
     void die()

@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -27,6 +28,17 @@ public class player : NetworkBehaviour
         refreshhealthbar();
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject collider = collision.gameObject;
+        
+        if (collider.tag == "bullet")
+        {
+            bullet bullet = collider.GetComponent<bullet>();
+            take_damage(bullet.damage);
+        }
+    }
+
     public void take_damage(float amount)
     {
         if (!IsOwner)
@@ -50,7 +62,7 @@ public class player : NetworkBehaviour
     {
         if (!IsOwner)
             return;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     void refreshhealthbar()
