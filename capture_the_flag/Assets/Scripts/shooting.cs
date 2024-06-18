@@ -11,6 +11,7 @@ public class shooting : NetworkBehaviour
 {
     public Transform firePointRotator;
     public Transform firePoint;
+    public Transform player;
     public GameObject bullet_prefab;
 
     Camera cam;
@@ -33,7 +34,7 @@ public class shooting : NetworkBehaviour
             return;
 
 
-        Vector2 anglevec = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector2 anglevec = cam.ScreenToWorldPoint(Input.mousePosition) - player.position;
         angle = Mathf.Atan2(anglevec.y, anglevec.x)*Mathf.Rad2Deg - 90f;
 
         firePointRotator.rotation = Quaternion.Euler(0, 0, angle);
