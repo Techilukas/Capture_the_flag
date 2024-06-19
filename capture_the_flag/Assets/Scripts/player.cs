@@ -18,6 +18,10 @@ public class player : NetworkBehaviour
 
     public void Start()
     {
+        if (IsHost)
+        {
+            transform.Translate(transform.position + new Vector3(300, -150));
+        }
         if (!IsOwner)
             return;
         virtualCamera = Instantiate(virtualcam_prefab).GetComponent<CinemachineVirtualCamera>();
@@ -62,7 +66,9 @@ public class player : NetworkBehaviour
     {
         if (!IsOwner)
             return;
-        //Destroy(gameObject);
+        NetworkManager.Singleton.Shutdown();
+        // At this point we must use the UnityEngine's SceneManager to switch back to the MainMenu
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Startup_Scene");
     }
 
     void refreshhealthbar()
