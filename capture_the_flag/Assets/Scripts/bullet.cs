@@ -14,12 +14,7 @@ public class bullet : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
-        //explosion
-
-
-        Destroy(gameObject);
+        this.GetComponent<NetworkObject>().Despawn();
 
     }
 

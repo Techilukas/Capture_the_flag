@@ -57,14 +57,7 @@ public class shooting : NetworkBehaviour
     
     void Cmdshoot()
     {
-        //if (IsHost)
-        //{
-        //    GameObject bullet = Instantiate(bullet_prefab, firePoint.position, firePoint.rotation);
-        //    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        //    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
-        //}
-        //Spawn the GameObject you assign in the Inspector
-        PingServerRpc(firePoint.position, firePoint.rotation, firePoint.up);
+            PingServerRpc(firePoint.position, firePoint.rotation, firePoint.up);
     }
 
     [ServerRpc]
